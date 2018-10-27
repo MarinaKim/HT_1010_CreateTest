@@ -1,0 +1,129 @@
+﻿<Window x:Class="CreateTest_1010.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CreateTest_1010"
+        mc:Ignorable="d"
+        Title="Create Test" Height="900" Width="900">
+    <Grid>
+        <TabControl x:Name="tabControl"
+                    SelectionChanged="tabControl_SelectionChanged">
+
+            <TabItem Header="Test">
+                <StackPanel>
+                    <ProgressBar x:Name="tstProgresbar"
+                                 Height="10"
+                               ></ProgressBar>
+                <Slider Height="50"                     
+                        x:Name="tstSlider"
+                        TickPlacement="TopLeft"
+                        TickFrequency="10"
+                        Minimum="0"
+                        Maximum="100"
+                        IsSnapToTickEnabled="True"
+                        ValueChanged="tstSlider_ValueChanged">
+                    
+                </Slider>
+                    <Label FontSize="20"
+                           x:Name="lblValueSlider"></Label>
+                    
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="QuestionList">
+                <StackPanel>
+                  
+                <ComboBox x:Name="cbListSections"
+                          SelectionChanged="cbListQuestions_SelectionChanged"
+                          DisplayMemberPath="Name">
+                          </ComboBox>
+                        <WrapPanel x:Name="wpQuestionList" Orientation="Vertical"></WrapPanel>                    
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="SectionList">
+                <StackPanel>
+                    <Label FontSize="20" Margin="20,5,20,20">
+                        Sections
+                    </Label>
+                    <GroupBox Header="AddSection" Margin="5" Padding="20">
+                        <WrapPanel Orientation="Horizontal">
+                            <TextBox x:Name="tbxAddSection"
+                                     Height="20"
+                                     Width="200"></TextBox>
+                            <Button x:Name="btnAddSection"
+                                    Click="btnAddSection_Click"
+                                    Content="Add Section"></Button>
+                        </WrapPanel>
+                    </GroupBox>
+                    <Label FontSize="20"                           
+       Margin="20,10,20,20">List Section</Label>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible"
+                                 HorizontalScrollBarVisibility="Disabled" 
+                                  Height="300">                 
+                    <ListBox x:Name="lbxListSection"
+                             DisplayMemberPath="Name"
+                             SelectionChanged="lbxListSection_SelectionChanged">                        
+                    </ListBox>
+
+                       
+                    </ScrollViewer>
+                    
+                    <!--<ListView x:Name="lvSection">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Header="Section Name"
+                                                    DisplayMemberBinding="{Binding Path=Name}">
+
+                                    </GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>-->
+               
+                </StackPanel>
+               
+            </TabItem>
+            <TabItem Header="AddQuestion">
+                <StackPanel>
+                    <Label Margin="20"
+                           HorizontalAlignment="Center"
+                           FontSize="20"
+                           >Add Question</Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="400*"></ColumnDefinition>
+                            <ColumnDefinition Width="300*"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    <TextBox x:Name="tbxQuestion" Text="Enter a question" Width="380" Margin="10"
+                             Grid.Column="0"></TextBox>
+                    <ComboBox x:Name="cbxSelection" Width="280" Margin="10"
+                              Grid.Column="1"
+                              DisplayMemberPath="Name"></ComboBox>
+                    <Button x:Name="btnAddAnswer"
+                            Content="Add answer"
+                            Click="btnAddAnswer_Click"
+                            Width="100"
+                            Margin="10"
+                            Grid.Column="2"></Button>
+                    </Grid>
+                    
+                    <GroupBox Header="Answer">
+                        <StackPanel x:Name="spAnswerList"></StackPanel>
+                    </GroupBox>
+                    <Button x:Name="btnSaveQuestion"
+                            Content="Save"
+                            IsDefault="True"
+                            Click="btnSaveQuestion_Click">
+                        
+                    </Button>
+                    
+                    
+                </StackPanel>
+            </TabItem>
+
+          
+        </TabControl>
+    </Grid>
+</Window>
